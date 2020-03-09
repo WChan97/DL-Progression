@@ -9,19 +9,100 @@
     <div id="info">
         <p>Currently a WIP</p>
     </div>
-    <p>What content do you want to clear?</p>
-    <input type="image" src="img/dungeon/highdragon.png" name="HDT_Image" alt="High Dragon" width="648" height="152">
-    <input type="image" src="img/dungeon/agito.png" name="AU_Image" alt="Agito Uprising" width="648" height="152">
-    <p>What Trial?</p>
-    <input type="image" src="img/dungeon/hms.png" name="HMS_Image" alt="High Mid" width="648" height="152">
-    <input type="image" src="img/dungeon/hbh.png" name="HBH_Image" alt="High Brun" width="648" height="152">
-    <input type="image" src="img/dungeon/hmc.png" name="HMC_Image" alt="High Merc" width="648" height="152">
-    <input type="image" src="img/dungeon/hjp.png" name="HJP_Image" alt="High Jup" width="648" height="152">
-    <input type="image" src="img/dungeon/hzd.png" name="HZD_Image" alt="High Zod" width="648" height="152">
-    <input type="image" src="img/dungeon/vw.png" name="VW_Image" alt="Volks" width="648" height="152">
-    <input type="image" src="img/dungeon/kyw.png" name="KYW_Image" alt="Kai Yan" width="648" height="152">
-    <p>For that you'll need...</p>
-    
+    <div id="decision">
+        <p>What content do you want to clear?</p>
+        <input type="image" class="collapsible" src="img/dungeon/highdragon.png" name="HDT_Image" alt="High Dragon">
+        <div class="content" id="hdt">
+            <p>What Trial?</p>
+
+            <input type="image" class="collapsible" src="img/dungeon/hms.png" name="HMS_Image" alt="High Mid">
+            <div class="content" id="hms">
+                <p>HMS is not an entry point and requires completion of HBH</p>
+            </div>
+
+            <input type="image" class="collapsible" src="img/dungeon/hbh.png" name="HBH_Image" alt="High Brun">
+            <div class="content" id="hbh">
+                <p>HBH master is an entry point</p>
+            </div>
+
+            <input type="image" class="collapsible" src="img/dungeon/hmc.png" name="HMC_Image" alt="High Merc">
+            <div class="content" id="hmc">
+                <p>HMC is not an entry point and requires completion of HMS</p>
+            </div>
+
+            <input type="image" class="collapsible" src="img/dungeon/hjp.png" name="HJP_Image" alt="High Jup">
+            <div class="content" id="hjp">
+                <p>High Jupiter Master is not an entry point, but can be completed with Kai Yan Weapons.</p>
+            </div>
+
+            <input type="image" class="collapsible" src="img/dungeon/hzd.png" name="HZD_Image" alt="High Zod">
+            <div class="content" id="hzd">
+                <p>High Zodiark Master is an entry point and can be completed with MHDT1 from High Jupiter Expert</p>
+            </div>
+
+        </div>
+        <br>
+        <input type="image" class="collapsible" src="img/dungeon/agito.png" name="AU_Image" alt="Agito Uprising">
+        <div class="content" id="au">
+            <p>What Trial?</p>
+
+            <input type="image" class="collapsible" src="img/dungeon/vw.png" name="VW_Image" alt="Volks">
+            <div class="content" id="vw">
+                <p>Volk's Wrath requires a bit more invesement</p>
+            </div>
+
+            <input type="image" class="collapsible" src="img/dungeon/kyw.png" name="KYW_Image" alt="Kai Yans">
+            <div class="content" id="kyw">
+                <p>Kai Yan's Wrath is quite easy to clear on Expert difficulty</p>
+            </div>
+        </div>
+    </div>
+
 </body>
+
+<style>
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 5px;
+        border: none;
+        outline: none;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .active,
+    .collapsible:hover {
+        background-color: #555;
+    }
+
+    .content {
+        padding: 0 5px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1;
+    }
+
+</style>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + 400 + "px";
+            }
+        });
+    }
+
+</script>
 
 </html>
